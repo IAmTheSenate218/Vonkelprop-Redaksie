@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang=af>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1.0">
+	
+	<title>Vonkelprop Redaksie</title>
+	
+	
+<style>
+@media (max-width: 768px) {
+  #mobile-menu-btn, .toggle-menu-button {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+  }
+  iframe {
+    display: none; /* Hide iframe for mobile view */
+	left: -9999px;
+	top: -9999px;
+  }
+  .submenu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .submenu li {
+	width: 100%;
+	padding: 15px 25px;
+    max-width: 110px; /* Increased size */
+    padding: 10px; /* Add padding for more space */
+    transform: translateY(-47px); /* Move up by 20px */
+  }
+}
+
+@media (min-width: 769px) {
+  #mobile-menu-btn, .toggle-menu-button {
+    display: none;
+  }
+  iframe {
+    display: none; /* Initially hide iframe for desktop view */
+  }
+}
+
+
+.animated-background { 
+position: absolute; 
+top: 0; 
+left: 0; 
+width: 80%; 
+height: 100%; 
+pointer-events: none; } 
+
+.line { 
+position: 
+fixed; 
+z-index: -1; 
+border-radius: 3px; 
+width: 200px; 
+height: 12px; 
+background-color: #90D5FF; 
+animation: moveLine 5s linear infinite; } 
+
+@keyframes moveLine { 
+0% { transform: translate(0, 0) rotate(135deg); 
+opacity: 1; } 
+
+100% { transform: translate(100px, -100px) rotate(135deg); 
+opacity: 0; } } 
+
+.line:nth-child(odd) { 
+animation-duration: 2.5s; 
+animation-delay: 0s; } 
+
+.line:nth-child(even) { 
+animation-duration: 3s; 
+animation-delay: 0s; } 
+
+#displayText ul { 
+color: #000000; } 
+
+.submenu li {
+box-shadow: 0 0 0 1px #000000; 
+position: relative; 
+text-align: center; 
+align-items: center; 
+display: flex; 
+flex-direction: column; 
+background-color: #0EB9F0; 
+max-width: 100px; 
+border-radius: 10px; 
+margin: -150px;
+margin-left: -150px; 
+margin-top: 200px; 
+display: flex; 
+z-index: 1000; } 
+
+.submenu li:active { 
+transform: scale(0.95); 
+background-color: #0EB9F0; 
+position: relative; 
+text-align: center; 
+align-items: center; 
+display: flex; 
+flex-direction: column; 
+max-width: 100px;
+border-radius: 10px;
+margin: -150px; 
+margin-left: -150px; 
+margin-top: 200px; 
+display: flex; 
+z-index: 1000;; } 
+
+.menu li a { 
+position: relative; 
+text-align: center; 
+display: flex; 
+flex-direction: column; 
+align-items: center; 
+justify-content: center; 
+background-color: #622A0F; 
+color: #FFFFFF; 
+height: 250px; 
+max-width: 50px; 
+margin-left: -25px; 
+margin-top: 10px; 
+border-radius: 10px; 
+transition: transform 0.1 ease, background-color 0.1 ease; } 
+
+.menu li a:active { 
+position: relative; 
+transform: scale(0.95); 
+background-color: #e0e0e0; } 
+
+.menu-container { 
+display: inline-block; 
+vertical-align: top; margin-left: -20px; } 
+
+.submenu { 
+display: none; } 
+
+.submenu-container { 
+display: flex; 
+gap: 20px; } 
+
+iframe { 
+position: relative; 
+display: block; 
+top: -250px; 
+border-radius: 10px; } 
+
+.container { 
+display: flex; 
+flex-direction: 
+row; 
+height: 125vh; } 
+
+.menu { 
+width: 12.5%; 
+padding: 10px; } 
+
+.content { 
+width: 50%; 
+padding: 0px; } 
+
+.submenu { 
+display: none; } 
+
+.content iframe { 
+width: 150%; 
+height: 100vh; } 
+
+#content { 
+max-width: 250px; 
+margin: 0 auto; 
+padding: 0; 
+list-style: none; 
+text-align: left; } 
+
+#content li, #content a { 
+display: block;
+margin: 10px 0; } 
+
+body { 
+margin: 0; 
+padding: 0; 
+font-family: Impact, sans-serif; 
+color: black; } 
+
+.marquee-container { 
+position: relative; 
+width: 100%; 
+height: 50px; 
+overflow: hidden; 
+white-space: nowrap; 
+padding: 10px 0; } 
+
+.marquee-text { 
+position: absolute; 
+display: 
+inline-block; 
+font-size: 3vw; 
+font-family: "Impact", sans-serif; 
+animation: slide 0.75s linear forwards; } 
+
+.highlight { 
+color: #000000; } 
+
+hr { 
+border: none; 
+height: 5px; 
+background-color: #622A0F; } 
+
+a { 
+color: #FFFFFF; 
+text-decoration: none; } 
+
+.custom-button { 
+color: #FEDD00;
+border-radius: 90px; 
+text-decoration: none; 
+font-size: 16px; 
+font-weight: bold; 
+font-family: Ariel, sans-serif; 
+display: inline-block; 
+text-align: center; 
+cursor: pointer; 
+transition: 
+background-color 0.3s ease, color 0.3s ease; 
+box-shadow: 0 0 0 3.5px #8BC6FC; } 
+
+.center-container { 
+text-align: center; } 
+
+@keyframes slide { 
+from { left: 100%; } to { left: 0; } } 
+</style>
+
+
+</head>
+<body style="background-color:#FFFFFF;color:#DAA520;">
+
+  <div class="animated-background">
+    <!-- Cool agtergrond -->
+  </div>
+
+    <div class="marquee-container">
+		<div class="marquee-text">
+			<marquee behavior="slide" direction="left" scrollamount="19" width="100%">
+				<a href="Bydrae.html">
+                    <font size="8" face="Ariel" color=#622A0F><b>[</b></font>
+                    <font size="6" face="Impact" color=#0EB9F0>Vonkelprop Redaksie</font>
+                    <font size="8" face="Ariel" color=#622A0F><b>]</b></font>
+				</a>
+			</marquee>
+		</div>
+    </div>
+    </br>
+    <hr/>
+    </br>
+    <span class="highlight">
+    <font face="Lucida Sans" size="3">
+        <b><p style="text-align: center;">Die Kuswag Skool redaksie span, Vonkelprop, skryf artikels oor die belangrikste skoolgebeurtenisse, versier met grappe, feite, en herhinneringe. Hierdie is 'n kolleksie van die Vonkelprop uitgawes, gepubliseer deur Vonkelprop.
+        </p></b>
+    </font>
+    </br>
+    <hr/>
+	
+	<div id="displayText" style="margin-top: 20px; font-size: 18px; color: #000;"></div>
+
+	
+    <div class="container">
+        <div class="menu">
+            <ul>
+                <li>
+                    <a href="#" onclick="showContent('2024')">2024</a>
+                </li>
+                <li>
+					<a href="#" onclick="showContent('2025')">2025</a>
+                </li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="2024" class="submenu">
+                <ul>
+                    <li><a href="vonkelprop2024kwartaal1.pdf" target="contentFrame">Kwartaal 1</a></li>
+                    <li><a href="vonkelprop2024kwartaal2.pdf" target="contentFrame">Kwartaal 2</a></li>
+                    <li><a href="vonkelprop2024kwartaal3.pdf" target="contentFrame">Kwartaal 3</a></li>
+                </ul>
+            </div>
+            <div id="2025" class="submenu">
+                <ul>
+				<li><a href="vonkelprop2025kwartaal1.pdf" target="contentFrame">Kwartaal 1</a></li>
+                    <li><a href="vonkelprop2025kwartaal2.pdf" target="contentFrame">Kwartaal 2</a></li>
+                    <li><a href="vonkelprop2025kwartaal3.pdf" target="contentFrame">Kwartaal 3</a></li>
+                </ul>
+            </div>
+            <iframe name="contentFrame" src=""></iframe>
+        </div>
+    </div>
+
+	
+	<!--Sit nuwe jare onder mekaar. Elke jaar moet ten minste 3 submenus he vir elke pdf. elke jaar is n menu. 
+	Elke click van n submenu bring op n pdf en text, en as jy wegclick, gaan hulle weg. 
+	As jy in n submenu is en jy click n ander, vervang hy sy pdf en text met n ander pdf en text.
+	Elke jaar se submenus verskil. Jy moet net die code copy en paste en bietjie veranderinge aan maak om nuwes te add.-->
+
+    </span>
+	
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const numLines = 120;
+  const animatedBackground = document.querySelector('.animated-background');
+
+  for (let i = 0; i < numLines; i++) {
+    const line = document.createElement('div');
+    line.classList.add('line');
+    line.style.left = `${Math.random() * 100}%`;
+    line.style.top = `${Math.random() * 100}%`;
+    animatedBackground.appendChild(line);
+  }
+
+  const iframe = document.querySelector('iframe[name="contentFrame"]');
+  const textElement = document.getElementById('displayText');
+  textElement.style.display = 'none';
+  iframe.style.display = 'none'; // Ensure iframe is hidden initially
+
+  let openSubmenu = null;
+
+  function checkViewport() {
+    if (window.innerWidth <= 768) {
+      iframe.style.display = 'none'; // Hide iframe for mobile view
+    }
+  }
+
+  // Initial check
+  checkViewport();
+
+  // Check on window resize
+  window.addEventListener('resize', checkViewport);
+
+  function showContent(category) {
+    document.querySelectorAll('.submenu').forEach(submenu => {
+      submenu.style.display = 'none';
+      submenu.classList.remove('active');
+    });
+
+    const targetSubmenu = document.getElementById(category);
+    targetSubmenu.style.display = 'block';
+    targetSubmenu.classList.add('active');
+    openSubmenu = targetSubmenu;
+
+    targetSubmenu.querySelectorAll('a[target="contentFrame"]').forEach((link, index) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        let textToShow;
+        if (link.href.includes('vonkelprop2024kwartaal1.pdf')) {
+          textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, Matriek 2024, Die nuwelinge van 2024, Nuwe personeel, Hokkie, Netbal, Tennis, Rugby, Gala, Krieket, Onnie Konsert, Snaakse feite, Jy grap seker, Nuwelingkonsert, Pi-dag, VCSV wereldbiddag, Geskiedkundige dae van Kwartaal 1';
+        } else if (link.href.includes('vonkelprop2024kwartaal2.pdf')) {
+          textToShow = 'Hokkie, Landloop, Netbal, Rugby, Skaak, Con Spirito, Givas, ATKV Redenaars, ATKV Jeugtak Projek, Hemelvaart, Best Speaker, Graad 8s: Hoe is Hoërskool?, Rugby toer, Hokkie toer, Gr 8-9 Top tien, Gr 10-12 Top 3 per vak, Wintersportbraai, SR funksie, Matriek Eksamenvoorbereiding';
+        } else if (link.href.includes('vonkelprop2024kwartaal3.pdf')) {
+          textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, Seuns Hokkie, Tennis, Fietsry, Tienertoneel, Damesoggend, Mnr en Mej Kuswag, Kaskar, Radikale Redenaars, Matrieks, Helpende Hand Nelson Mandela projek, SR afkondiging, Rugby pa en seuns funksie, Jy grap seker, Snaakse feite, ATKV aktiwiteit';
+        } else if (link.href.includes('vonkelprop2025kwartaal1.pdf')) {
+          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+        } else if (link.href.includes('vonkelprop2025kwartaal2.pdf')) {
+          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+        } else if (link.href.includes('vonkelprop2025kwartaal3.pdf')) {
+          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+        }
+
+        displayText(textToShow, index, link.href);
+        iframe.style.display = 'block'; // Display iframe only when the PDF is loaded
+        iframe.src = link.href;
+      });
+    });
+  }
+
+  function displayText(text, index, pdfLink) {
+    textElement.innerHTML = `<ul style="margin: 0 auto; display: table;">${text.split(', ').map(item => `<li>${item}</li>`).join('')}</ul>`;
+    textElement.style.display = 'block';
+    textElement.style.paddingBottom = '60px';
+
+    const toggleMenuButton = document.createElement('button');
+    toggleMenuButton.id = `toggleMenu${index + 1}`;
+    toggleMenuButton.textContent = 'Kliek vir PDF';
+    toggleMenuButton.classList.add('toggle-menu-button');
+    textElement.appendChild(toggleMenuButton);
+
+    toggleMenuButton.addEventListener('click', () => {
+      window.open(pdfLink, '_blank'); // Opens the linked PDF in a new tab
+    });
+  }
+
+  document.addEventListener('click', event => {
+    if (openSubmenu && !openSubmenu.contains(event.target) && !event.target.closest('.menu > ul > li > a')) {
+      openSubmenu.style.display = 'none';
+      openSubmenu = null;
+      textElement.style.display = 'none';
+      iframe.style.display = 'none'; // Ensure iframe is hidden when closing the submenu
+      iframe.src = ''; // Clear the iframe source
+    }
+  });
+
+  document.querySelectorAll('a[href="#"]').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      const category = link.getAttribute('onclick').match(/'([^']+)'/)[1];
+      showContent(category);
+      event.stopPropagation();
+    });
+  });
+
+  // Function to adjust submenu button position and size on mobile devices
+  function adjustMobileSubmenuButtons() {
+    if (window.innerWidth <= 768) {  // Check if it's a mobile device
+      const submenuButtons = document.querySelectorAll('.submenu li');
+      
+      submenuButtons.forEach(button => {
+        button.style.padding = '15px 25px'; // Increase padding for better interaction area
+        button.style.width = '100%'; // Make the button fill the width
+        button.style.transform = 'translateY(-60px)'; // Move the button up by 60px
+        button.querySelector('a').style.padding = '10px 0'; // Adjust anchor padding
+      });
+    } else {
+      // Reset styles when not on mobile
+      const submenuButtons = document.querySelectorAll('.submenu li');
+      
+      submenuButtons.forEach(button => {
+        button.style.padding = ''; // Reset padding
+        button.style.width = ''; // Reset width
+        button.style.transform = ''; // Reset position
+        button.querySelector('a').style.padding = ''; // Reset anchor padding
+      });
+    }
+  }
+
+  // Adjust submenu button sizes and position on load and resize
+  adjustMobileSubmenuButtons();
+  window.addEventListener('resize', adjustMobileSubmenuButtons);
+});
+
+</script>
+
+
+	
+</body>
+
+	
+</html>
