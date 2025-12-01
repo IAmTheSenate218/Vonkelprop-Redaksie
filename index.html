@@ -364,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         let textToShow;
-          if (href.includes('vonkelprop2024kwartaal1.pdf')) {
+  if (href.includes('vonkelprop2024kwartaal1.pdf')) {
     textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, ...';
   } else if (href.includes('vonkelprop2024kwartaal2.pdf')) {
     textToShow = 'Hokkie, Landloop, Netbal, ...';
@@ -374,11 +374,9 @@ document.addEventListener('DOMContentLoaded', () => {
     textToShow = 'Nuwelingskonsert ..., Vrugtefees, ...';
   } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
     textToShow = 'Hokkie, Rugby, Netbal, ...';
-  } else if (href.includes('vonkelprop2026kwartaal1.pdf')) {
-    textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-  } else if (href.includes('vonkelprop2026kwartaal2.pdf')) {
-    textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-  } else if (href.includes('vonkelprop2026kwartaal3.pdf')) {
+  } else if (href.includes('vonkelprop2026kwartaal1.pdf') ||
+             href.includes('vonkelprop2026kwartaal2.pdf') ||
+             href.includes('vonkelprop2026kwartaal3.pdf')) {
     textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
   } else {
     textToShow = '';
