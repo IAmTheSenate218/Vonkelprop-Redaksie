@@ -364,33 +364,28 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
         let textToShow;
-        if (link.href.includes('vonkelprop2024kwartaal1.pdf')) {
-          textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, Matriek 2024, Die nuwelinge van 2024, Nuwe personeel, Hokkie, Netbal, Tennis, Rugby, Gala, Krieket, Onnie Konsert, Snaakse feite, Jy grap seker, Nuwelingkonsert, Pi-dag, VCSV wereldbiddag, Geskiedkundige dae van Kwartaal 1';
-        } else if (link.href.includes('vonkelprop2024kwartaal2.pdf')) {
-          textToShow = 'Hokkie, Landloop, Netbal, Rugby, Skaak, Con Spirito, Givas, ATKV Redenaars, ATKV Jeugtak Projek, Hemelvaart, Best Speaker, Graad 8s: Hoe is Hoërskool?, Rugby toer, Hokkie toer, Gr 8-9 Top tien, Gr 10-12 Top 3 per vak, Wintersportbraai, SR funksie, Matriek Eksamenvoorbereiding';
-        } else if (link.href.includes('vonkelprop2024kwartaal3.pdf')) {
-          textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, Seuns Hokkie, Tennis, Fietsry, Tienertoneel, Damesoggend, Mnr en Mej Kuswag, Kaskar, Radikale Redenaars, Matrieks, Helpende Hand Nelson Mandela projek, SR afkondiging, Rugby pa en seuns funksie, Jy grap seker, Snaakse feite, ATKV aktiwiteit';
-        } else if (link.href.includes('vonkelprop2025kwartaal1.pdf')) {
-          textToShow = 'Nuwelingskonsert en opedag van Graad 8s, Vrugtefees, Rugby aandreeks, Netbal aandreeks, Hokkie aandreeks, Givas, Krieket, Redenaars, PI-dag, ATKV-Jeugtak proe aand, Mnr en Mej Kuswag, Welkom Juffrou Beukes van graad 2!, Memes, Interessante feite';
-        } else if (link.href.includes('vonkelprop2025kwartaal2.pdf')) {
-          textToShow = 'Hokkie, Rugby, Netbal, Swem, Landloop, Skaak, Bloedskenk, ATKV redenaars, Con spirito, Paasfees, Moedersdag, Vadersdag, Hemelvaart, My children my Africa play, Kuswag roadshow ';
-} 
-else if (link.href.includes('vonkelprop2026kwartaal1.pdf')) {
-          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-
-else if (link.href.includes('vonkelprop2026kwartaal2.pdf')) {
-          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-
-else if (link.href.includes('vonkelprop2026kwartaal3.pdf')) {
-          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-}
-
-        displayText(textToShow, index, link.href);
-        iframe.style.display = 'block'; // Display iframe only when the PDF is loaded
-        iframe.src = link.href;
-      });
-    });
+  if (href.includes('vonkelprop2024kwartaal1.pdf')) {
+    textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, ...';
+  } else if (href.includes('vonkelprop2024kwartaal2.pdf')) {
+    textToShow = 'Hokkie, Landloop, Netbal, ...';
+  } else if (href.includes('vonkelprop2024kwartaal3.pdf')) {
+    textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, ...';
+  } else if (href.includes('vonkelprop2025kwartaal1.pdf')) {
+    textToShow = 'Nuwelingskonsert ..., Vrugtefees, ...';
+  } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
+    textToShow = 'Hokkie, Rugby, Netbal, ...';
+  } else if (href.includes('vonkelprop2026kwartaal1.pdf') ||
+             href.includes('vonkelprop2026kwartaal2.pdf') ||
+             href.includes('vonkelprop2026kwartaal3.pdf')) {
+    textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+  } else {
+    textToShow = '';
   }
+
+  displayText(textToShow, index, href);
+  iframe.style.display = 'block';
+  iframe.src = href;
+};
 
   function displayText(text, index, pdfLink) {
     textElement.innerHTML = `<ul style="margin: 0 auto; display: table;">${text.split(', ').map(item => `<li>${item}</li>`).join('')}</ul>`;
