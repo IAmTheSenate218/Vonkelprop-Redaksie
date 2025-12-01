@@ -333,20 +333,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const iframe = document.querySelector('iframe[name="contentFrame"]');
   const textElement = document.getElementById('displayText');
   textElement.style.display = 'none';
-  iframe.style.display = 'none'; // Ensure iframe is hidden initially
+  iframe.style.display = 'none';
 
   let openSubmenu = null;
 
   function checkViewport() {
     if (window.innerWidth <= 768) {
-      iframe.style.display = 'none'; // Hide iframe for mobile view
+      iframe.style.display = 'none';
     }
   }
 
-  // Initial check
   checkViewport();
-
-  // Check on window resize
   window.addEventListener('resize', checkViewport);
 
   function showContent(category) {
@@ -363,29 +360,38 @@ document.addEventListener('DOMContentLoaded', () => {
     targetSubmenu.querySelectorAll('a[target="contentFrame"]').forEach((link, index) => {
       link.addEventListener('click', (event) => {
         event.preventDefault();
-        let textToShow;
-  if (href.includes('vonkelprop2024kwartaal1.pdf')) {
-    textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, ...';
-  } else if (href.includes('vonkelprop2024kwartaal2.pdf')) {
-    textToShow = 'Hokkie, Landloop, Netbal, ...';
-  } else if (href.includes('vonkelprop2024kwartaal3.pdf')) {
-    textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, ...';
-  } else if (href.includes('vonkelprop2025kwartaal1.pdf')) {
-    textToShow = 'Nuwelingskonsert ..., Vrugtefees, ...';
-  } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
-    textToShow = 'Hokkie, Rugby, Netbal, ...';
-  } else if (href.includes('vonkelprop2026kwartaal1.pdf') ||
-             href.includes('vonkelprop2026kwartaal2.pdf') ||
-             href.includes('vonkelprop2026kwartaal3.pdf')) {
-    textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
-  } else {
-    textToShow = '';
-  }
 
-  displayText(textToShow, index, href);
-  iframe.style.display = 'block';
-  iframe.src = href;
-};
+        const href = link.getAttribute('href'); // FIXED VARIABLE
+
+        let textToShow;
+
+        if (href.includes('vonkelprop2024kwartaal1.pdf')) {
+          textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, ...';
+        } else if (href.includes('vonkelprop2024kwartaal2.pdf')) {
+          textToShow = 'Hokkie, Landloop, Netbal, ...';
+        } else if (href.includes('vonkelprop2024kwartaal3.pdf')) {
+          textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, ...';
+        } else if (href.includes('vonkelprop2025kwartaal1.pdf')) {
+          textToShow = 'Nuwelingskonsert ..., Vrugtefees, ...';
+        } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
+          textToShow = 'Hokkie, Rugby, Netbal, ...';
+        } else if (
+          href.includes('vonkelprop2026kwartaal1.pdf') ||
+          href.includes('vonkelprop2026kwartaal2.pdf') ||
+          href.includes('vonkelprop2026kwartaal3.pdf')
+        ) {
+          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+        } else {
+          textToShow = '';
+        }
+
+        displayText(textToShow, index, href);
+
+        iframe.style.display = 'block';
+        iframe.src = href;
+      });
+    });
+  }
 
   function displayText(text, index, pdfLink) {
     textElement.innerHTML = `<ul style="margin: 0 auto; display: table;">${text.split(', ').map(item => `<li>${item}</li>`).join('')}</ul>`;
@@ -399,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
     textElement.appendChild(toggleMenuButton);
 
     toggleMenuButton.addEventListener('click', () => {
-      window.open(pdfLink, '_blank'); // Opens the linked PDF in a new tab
+      window.open(pdfLink, '_blank');
     });
   }
 
@@ -408,8 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
       openSubmenu.style.display = 'none';
       openSubmenu = null;
       textElement.style.display = 'none';
-      iframe.style.display = 'none'; // Ensure iframe is hidden when closing the submenu
-      iframe.src = ''; // Clear the iframe source
+      iframe.style.display = 'none';
+      iframe.src = '';
     }
   });
 
@@ -422,38 +428,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Function to adjust submenu button position and size on mobile devices
   function adjustMobileSubmenuButtons() {
-    if (window.innerWidth <= 768) {  // Check if it's a mobile device
-      const submenuButtons = document.querySelectorAll('.submenu li');
-      
+    const submenuButtons = document.querySelectorAll('.submenu li');
+
+    if (window.innerWidth <= 768) {
       submenuButtons.forEach(button => {
-        button.style.padding = '15px 25px'; // Increase padding for better interaction area
-        button.style.width = '100%'; // Make the button fill the width
-        button.style.transform = 'translateY(-60px)'; // Move the button up by 60px
-        button.querySelector('a').style.padding = '10px 0'; // Adjust anchor padding
+        button.style.padding = '15px 25px';
+        button.style.width = '100%';
+        button.style.transform = 'translateY(-60px)';
+        button.querySelector('a').style.padding = '10px 0';
       });
     } else {
-      // Reset styles when not on mobile
-      const submenuButtons = document.querySelectorAll('.submenu li');
-      
       submenuButtons.forEach(button => {
-        button.style.padding = ''; // Reset padding
-        button.style.width = ''; // Reset width
-        button.style.transform = ''; // Reset position
-        button.querySelector('a').style.padding = ''; // Reset anchor padding
+        button.style.padding = '';
+        button.style.width = '';
+        button.style.transform = '';
+        button.querySelector('a').style.padding = '';
       });
     }
   }
 
-  // Adjust submenu button sizes and position on load and resize
   adjustMobileSubmenuButtons();
   window.addEventListener('resize', adjustMobileSubmenuButtons);
 });
-
 </script>
-
-
 	
 </body>
 
