@@ -250,7 +250,7 @@ from { left: 100%; } to { left: 0; } }
 		<div class="marquee-text">
 			<marquee behavior="slide" direction="left" scrollamount="19" width="100%">
                     <font size="8" face="Ariel" color=#622A0F><b>[</b></font>
-                    <font size="6" face="Impact" color=#0EB9F0>The voice of Kuswag</font>
+                    <font size="6" face="Impact" color=#0EB9F0>The Voice of Kuswag</font>
                     <font size="8" face="Ariel" color=#622A0F><b>]</b></font>
 			</marquee>
 		</div>
@@ -260,7 +260,7 @@ from { left: 100%; } to { left: 0; } }
     </br>
     <span class="highlight">
     <font face="Lucida Sans" size="3">
-        <b><p style="text-align: center;">The Kuswag Skool news team, writes articles about important school events, decorated with little jokes,facts and memories. This is a collection of <i>The Voice of Kuswag</i>'s articles.
+        <b><p style="text-align: center;">The Kuswag School news team, writes articles about important school events, decorated with little jokes,facts and memories. This is a collection of <i>The Voice of Kuswag</i>'s articles.
         </p></b>
     </font>
     </br>
@@ -372,12 +372,13 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (href.includes('vonkelprop2024kwartaal3.pdf')) {
           textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, ...';
         } else if (href.includes('vonkelprop2025kwartaal1.pdf')) {
-          textToShow = 'Nuwelingskonsert ..., Vrugtefees, ...';
+          textToShow = 'Nuwelingskonsert, Vrugtefees, ...';
         } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
           textToShow = 'Hokkie, Rugby, Netbal, ...';
         } else if (
-          href.includes('Term12026.pdf') ||
-          href.includes('Term22026.pdf') ||
+          href.includes('Term12026.pdf')) {
+          textToShow = 'Interne Redenaars, EG Jansen Redenaars, Rugby Night series, Netball Night series, Cricket, First Hockey team, Interhouse, Athletics, Spirit week, Fruit festival, Nuwelingkonsert, New Staff, Blood Donation, ATKV Jeugtak, RCL Management, PI-Day, Extramural Karate, MR and MISS Kuswag';
+        } href.includes('Term22026.pdf') ||
           href.includes('Term32026.pdf')
         ) {
           textToShow = 'Not out yet. Wait for indicated term. ';
