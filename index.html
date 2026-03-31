@@ -376,11 +376,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
           textToShow = 'Hokkie, Rugby, Netbal, ...';
         } else if (
-          href.includes('vonkelprop2026kwartaal1.pdf') ||
-          href.includes('vonkelprop2026kwartaal2.pdf') ||
-          href.includes('vonkelprop2026kwartaal3.pdf')
+          href.includes('Term12026.pdf') ||
+          href.includes('Term22026.pdf') ||
+          href.includes('Term32026.pdf')
         ) {
-          textToShow = 'Nog nie uit nie. Wag vir die aangeduide kwartaal';
+          textToShow = 'Not out yet. Wait for indicated term. ';
         } else {
           textToShow = '';
         }
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toggleMenuButton = document.createElement('button');
     toggleMenuButton.id = `toggleMenu${index + 1}`;
-    toggleMenuButton.textContent = 'Kliek vir PDF';
+    toggleMenuButton.textContent = 'Click for PDF';
     toggleMenuButton.classList.add('toggle-menu-button');
     textElement.appendChild(toggleMenuButton);
 
