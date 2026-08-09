@@ -107,11 +107,11 @@ body {
 			<tr>
 				<td><!Year 2024 and it's 3 articles released that year. These articles are named in Afrikaans because they are in Afrikaans>
 					<details><summary>2024</summary>
-						<li><a href="vonkelprop2024kwartaal1.pdf" target="pdfViewer"><button>Kwartaal 1</button></a></li>
+						<li><a href="vonkelprop2024kwartaal1.pdf"><button>Kwartaal 1</button></a></li>
 						</br>
-						<li><a href="vonkelprop2024kwartaal2.pdf" target="pdfViewer"><button>Kwartaal 2</button></a></li>
+						<li><a href="vonkelprop2024kwartaal2.pdf"><button>Kwartaal 2</button></a></li>
 						</br>
-						<li><a href="vonkelprop2024kwartaal3.pdf" target="pdfViewer"><button>Kwartaal 3</button></a></li>
+						<li><a href="vonkelprop2024kwartaal3.pdf"><button>Kwartaal 3</button></a></li>
 					</details>
 				</td>
 			</tr>
@@ -121,9 +121,9 @@ body {
 			<tr>
 				<td><!Year 2025 and it's 2 articles released that year. They are named in English but are Afrikaans>
 					<details><summary>2025</summary>
-						<li><a href="vonkelprop2025kwartaal1.pdf" target="pdfViewer"><button>Term 1</button></a></li>
+						<li><a href="vonkelprop2025kwartaal1.pdf"><button>Term 1</button></a></li>
 						</br>
-						<li><a href="vonkelprop2025kwartaal2.pdf" target="pdfViewer"><button>Term 2</button></a></li>
+						<li><a href="vonkelprop2025kwartaal2.pdf"><button>Term 2</button></a></li>
 					</details>
 				</td>
 			</tr>
@@ -132,11 +132,11 @@ body {
 			<tr>
 				<td><!Year 2026 and it's 3 articles released that year>
 					<details><summary>2026</summary>
-						<li><a href="Term12026.pdf" target="pdfViewer"><button>Term 1</button></a></li>
+						<li><a href="Term12026.pdf"><button>Term 1</button></a></li>
 						</br>
-						<li><a href="Term22026.pdf" target="pdfViewer"><button>Term 2</button></a></li>
+						<li><a href="Term22026.pdf"><button>Term 2</button></a></li>
 						</br>
-						<li><a target="pdfViewer"><!Add button>No Term 3 yet<!Add button></a></li>
+						<li><a ><!Add button>No Term 3 yet<!Add button></a></li>
 					</details>
 				</td>
 			</tr>
@@ -145,15 +145,13 @@ body {
 		</center>
 		</br>
 		</br>
-		<!iframe for displaying the content. both name and id is pdfViewer, spelling and case matters. On first load, the iframe does not appear, it only appears when one of the links containing the [target="pdfViewer"] atribute is clicked.>
-		<center><iframe id="pdfViewer" name="pdfViewer" width="70%" height="70%" hidden></iframe></center>
 	</body>
 
 
 
 <!Javascript starts here. DO NOT TOUCH. There is no need to change anything in here, you WILL break something if you dont know Javascript already, stick to the HTML area>
 
-<!If you truly need to tocuh things here or need to understand how they work, basically the Javascript makes the animation in the background in the "Animated Background" section, anjd in the "PDF Viewer" section it makes the pdfViewer capable of being hidden and reapppearing when the link is clicked.>
+<!If you truly need to tocuh things here or need to understand how they work, basically the Javascript makes the animation in the background in the "Animated Background" section.>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -173,20 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         animatedBackground.appendChild(line);
     }
-
-
-    /* =========================
-       PDF VIEWER
-       ========================= */
-
-    const pdfViewer = document.getElementById('pdfViewer');
-
-    document.querySelectorAll('a[target="pdfViewer"]').forEach(link => {
-        link.addEventListener('click', () => {
-            pdfViewer.hidden = false;
-        });
-    });
-
 });
 </script>
 </html>
