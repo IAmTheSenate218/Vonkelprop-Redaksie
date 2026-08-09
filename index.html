@@ -1,456 +1,188 @@
-<!DOCTYPE html>
 <html>
+	<head>
+		<title>The Voice of Kuswag</title>
+		<link rel="icon" href="News.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-	content="width=device-width, initial-scale=1.0">
-	
-	<title>The Voice of Kuswag</title>
-	
-	
+<!CSS code here, no need to touch unless you need to change colours or global values>
 <style>
-@media (max-width: 768px) {
-  #mobile-menu-btn, .toggle-menu-button {
-    display: inline-block;
-    text-align: center;
-    margin: 0 auto;
-  }
-  iframe {
-    display: none; /* Hide iframe for mobile view */
-	left: -9999px;
-	top: -9999px;
-  }
-  .submenu ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .submenu li {
-	width: 100%;
-	padding: 15px 25px;
-    max-width: 110px; /* Increased size */
-    padding: 10px; /* Add padding for more space */
-    transform: translateY(-47px); /* Move up by 20px */
-  }
+	/* =========================
+   ANIMATED BACKGROUND
+   ========================= */
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    pointer-events: none;
 }
 
-@media (min-width: 769px) {
-  #mobile-menu-btn, .toggle-menu-button {
-    display: none;
-  }
-  iframe {
-    display: none; /* Initially hide iframe for desktop view */
-  }
+.line {
+    position: fixed;
+    z-index: -1;
+    border-radius: 3px;
+    width: 200px;
+    height: 12px;
+    background-color: #90D5FF;
+    animation: moveLine 5s linear infinite;
 }
 
+@keyframes moveLine {
+    0% {
+        transform: translate(0, 0) rotate(135deg);
+        opacity: 1;
+    }
 
-.animated-background { 
-position: absolute; 
-top: 0; 
-left: 0; 
-width: 80%; 
-height: 100%; 
-pointer-events: none; } 
+    100% {
+        transform: translate(100px, -100px) rotate(135deg);
+        opacity: 0;
+    }
+}
 
-.line { 
-position: 
-fixed; 
-z-index: -1; 
-border-radius: 3px; 
-width: 200px; 
-height: 12px; 
-background-color: #90D5FF; 
-animation: moveLine 5s linear infinite; } 
+.line:nth-child(odd) {
+    animation-duration: 2.5s;
+}
 
-@keyframes moveLine { 
-0% { transform: translate(0, 0) rotate(135deg); 
-opacity: 1; } 
+.line:nth-child(even) {
+    animation-duration: 3s;
+}
 
-100% { transform: translate(100px, -100px) rotate(135deg); 
-opacity: 0; } } 
+button {
+    width: 75px;
+    height: 30px;
+    font-size: 12px;
+}
 
-.line:nth-child(odd) { 
-animation-duration: 2.5s; 
-animation-delay: 0s; } 
-
-.line:nth-child(even) { 
-animation-duration: 3s; 
-animation-delay: 0s; } 
-
-#displayText ul { 
-color: #000000; } 
-
-.submenu li {
-box-shadow: 0 0 0 1px #000000; 
-position: relative; 
-text-align: center; 
-align-items: center; 
-display: flex; 
-flex-direction: column; 
-background-color: #0EB9F0; 
-max-width: 100px; 
-border-radius: 10px; 
-margin: -150px;
-margin-left: -150px; 
-margin-top: 200px; 
-display: flex; 
-z-index: 1000; } 
-
-.submenu li:active { 
-transform: scale(0.95); 
-background-color: #0EB9F0; 
-position: relative; 
-text-align: center; 
-align-items: center; 
-display: flex; 
-flex-direction: column; 
-max-width: 100px;
-border-radius: 10px;
-margin: -150px; 
-margin-left: -150px; 
-margin-top: 200px; 
-display: flex; 
-z-index: 1000;; } 
-
-.menu li a { 
-position: relative; 
-text-align: center; 
-display: flex; 
-flex-direction: column; 
-align-items: center; 
-justify-content: center; 
-background-color: #622A0F; 
-color: #FFFFFF; 
-height: 250px; 
-max-width: 50px; 
-margin-left: -25px; 
-margin-top: 10px; 
-border-radius: 10px; 
-transition: transform 0.1 ease, background-color 0.1 ease; } 
-
-.menu li a:active { 
-position: relative; 
-transform: scale(0.95); 
-background-color: #e0e0e0; } 
-
-.menu-container { 
-display: inline-block; 
-vertical-align: top; margin-left: -20px; } 
-
-.submenu { 
-display: none; } 
-
-.submenu-container { 
-display: flex; 
-gap: 20px; } 
-
-iframe { 
-position: relative; 
-display: block; 
-top: -250px; 
-border-radius: 10px; } 
-
-.container { 
-display: flex; 
-flex-direction: 
-row; 
-height: 125vh; } 
-
-.menu { 
-width: 12.5%; 
-padding: 10px; } 
-
-.content { 
-width: 50%; 
-padding: 0px; } 
-
-.submenu { 
-display: none; } 
-
-.content iframe { 
-width: 150%; 
-height: 100vh; } 
-
-#content { 
-max-width: 250px; 
-margin: 0 auto; 
-padding: 0; 
-list-style: none; 
-text-align: left; } 
-
-#content li, #content a { 
-display: block;
-margin: 10px 0; } 
-
-body { 
-margin: 0; 
-padding: 0; 
-font-family: Impact, sans-serif; 
-color: black; } 
-
-.marquee-container { 
-position: relative; 
-width: 100%; 
-height: 50px; 
-overflow: hidden; 
-white-space: nowrap; 
-padding: 10px 0; } 
-
-.marquee-text { 
-position: absolute; 
-display: 
-inline-block; 
-font-size: 3vw; 
-font-family: "Impact", sans-serif; 
-animation: slide 0.75s linear forwards; } 
-
-.highlight { 
-color: #000000; } 
-
-hr { 
-border: none; 
-height: 5px; 
-background-color: #622A0F; } 
-
-a { 
-color: #FFFFFF; 
-text-decoration: none; } 
-
-.custom-button { 
-color: #FEDD00;
-border-radius: 90px; 
-text-decoration: none; 
-font-size: 16px; 
-font-weight: bold; 
-font-family: Ariel, sans-serif; 
-display: inline-block; 
-text-align: center; 
-cursor: pointer; 
-transition: 
-background-color 0.3s ease, color 0.3s ease; 
-box-shadow: 0 0 0 3.5px #8BC6FC; } 
-
-.center-container { 
-text-align: center; } 
-
-@keyframes slide { 
-from { left: 100%; } to { left: 0; } } 
+#CloseButton {
+    width: 65px;
+    height: 25px;
+    font-size: 10px;
+}
+summary {
+    font-size: 40px;
+	color: #0eb9f0;
+	-webkit-text-stroke: 1px black;
+}
+button {
+    background-color: #0eb9f0;
+    color: White;
+	border-radius: 8px;
+}
+body {
+    font-family: Georgia, serif;
+}
 </style>
 
+<!HTML code starts here, this is where you will add things to add the article to the webpage>
 
-</head>
-<body style="background-color:#FFFFFF;color:#DAA520;">
-
-  <div class="animated-background">
-    <!-- Cool agtergrond -->
-  </div>
-
-    <div class="marquee-container">
-		<div class="marquee-text">
-			<marquee behavior="slide" direction="left" scrollamount="19" width="100%">
-                    <font size="8" face="Ariel" color=#622A0F><b>[</b></font>
-                    <font size="6" face="Impact" color=#0EB9F0>The Voice of Kuswag</font>
-                    <font size="8" face="Ariel" color=#622A0F><b>]</b></font>
-			</marquee>
-		</div>
-    </div>
-    </br>
-    <hr/>
-    </br>
-    <span class="highlight">
-    <font face="Lucida Sans" size="3">
-        <b><p style="text-align: center;">The Kuswag School news team, writes articles about important school events, decorated with little jokes,facts and memories. This is a collection of <i>The Voice of Kuswag</i>'s articles.
-        </p></b>
-    </font>
-    </br>
-    <hr/>
+	<body>
+	<div class="animated-background"></div>
 	
-	<div id="displayText" style="margin-top: 20px; font-size: 18px; color: #000;"></div>
-
+	<!Heading>
+	<center><font size="7" color="#0eb9f0" style="-webkit-text-stroke: 1px black;">The Voice of Kuswag</font>
 	
-    <div class="container">
-        <div class="menu">
-            <ul>
-                <li>
-                    <a href="#" onclick="showContent('2024')">2024</a>
-                </li>
-                <li>
-					<a href="#" onclick="showContent('2025')">2025</a>
-                </li>
-           <li>
-					<a href="#" onclick="showContent('2026')">2026</a>
-                </li>
-            </ul>
-        </div>
-        <div class="content">
-            <div id="2024" class="submenu">
-                <ul>
-                    <li><a href="vonkelprop2024kwartaal1.pdf" target="contentFrame">Kwartaal 1</a></li>
-                    <li><a href="vonkelprop2024kwartaal2.pdf" target="contentFrame">Kwartaal 2</a></li>
-                    <li><a href="vonkelprop2024kwartaal3.pdf" target="contentFrame">Kwartaal 3</a></li>
-                </ul>
-            </div>
-            <div id="2025" class="submenu">
-                <ul>
-				<li><a href="vonkelprop2025kwartaal1.pdf" target="contentFrame">Kwartaal 1</a></li>
-                    <li><a href="vonkelprop2025kwartaal2.pdf" target="contentFrame">Kwartaal 2</a></li>
-                    
-                </ul>
-            </div>
-<div id="2026" class="submenu">
-                <ul>
-				<li><a href="Term12026.pdf" target="contentFrame">Term 1</a></li>
-                    <li><a href="Term22026.pdf" target="contentFrame">Term 2</a></li>
-                    <li><a href="Term32026.pdf" target="contentFrame">Term 3</a></li>
-                </ul>
-            </div>
-            <iframe name="contentFrame" src=""></iframe>
-        </div>
-    </div>
-
+	</br></br>
 	
-	<!--Sit nuwe jare onder mekaar. Elke jaar moet ten minste 3 submenus he vir elke pdf. elke jaar is n menu. 
-	Elke click van n submenu bring op n pdf en text, en as jy wegclick, gaan hulle weg. 
-	As jy in n submenu is en jy click n ander, vervang hy sy pdf en text met n ander pdf en text.
-	Elke jaar se submenus verskil. Jy moet net die code copy en paste en bietjie veranderinge aan maak om nuwes te add.-->
-
-    </span>
+	<!Button for closing the PDF's, (actually only reloads the same page, for the illusion. Alternative requires Javascript>
+	<a href="index.html"><button id="CloseButton">Close PDF</button></a></center>
 	
+	<!Introduction Paragraph in between 2 horizontal lines>
+	<hr size="10" color="#622a0f"/>
+	The Kuswag School news team writes articles about important school events, decorated with little jokes, facts and memories. This is a collection of articles from 2024, when we were called 
+	<i>Vonkelprop Redaksie</i> and released in Afrikaans, to present day <i>The Voice of Kuswag</i>, releasing in English. 
+	<hr size="10" color="#622a0f"/>
+	<br>
+	
+		<center>
+		
+		<!When you change something, copy the previous year rows, and paste it, and only remove or add terms not needed or needed, and change file naming to match the new article. You should likely only need to change here>
+		
+		<table>
+			<tr>
+				<td><!Year 2024 and it's 3 articles released that year. These articles are named in Afrikaans because they are in Afrikaans>
+					<details><summary>2024</summary>
+						<li><a href="vonkelprop2024kwartaal1.pdf" target="pdfViewer"><button>Kwartaal 1</button></a></li>
+						</br>
+						<li><a href="vonkelprop2024kwartaal2.pdf" target="pdfViewer"><button>Kwartaal 2</button></a></li>
+						</br>
+						<li><a href="vonkelprop2024kwartaal3.pdf" target="pdfViewer"><button>Kwartaal 3</button></a></li>
+					</details>
+				</td>
+			</tr>
+		
+		<td>&nbsp;</td>
+		
+			<tr>
+				<td><!Year 2025 and it's 2 articles released that year. They are named in English but are Afrikaans>
+					<details><summary>2025</summary>
+						<li><a href="vonkelprop2025kwartaal1.pdf" target="pdfViewer"><button>Term 1</button></a></li>
+						</br>
+						<li><a href="vonkelprop2025kwartaal2.pdf" target="pdfViewer"><button>Term 2</button></a></li>
+					</details>
+				</td>
+			</tr>
+		
+		<td>&nbsp;</td>
+			<tr>
+				<td><!Year 2026 and it's 3 articles released that year>
+					<details><summary>2026</summary>
+						<li><a href="Term12026.pdf" target="pdfViewer"><button>Term 1</button></a></li>
+						</br>
+						<li><a href="Term22026.pdf" target="pdfViewer"><button>Term 2</button></a></li>
+						</br>
+						<li><a target="pdfViewer"><!Add button>No Term 3 yet<!Add button></a></li>
+					</details>
+				</td>
+			</tr>
+		
+		</table>
+		</center>
+		</br>
+		<!iframe for displaying the content. both name and id is pdfViewer, spelling and case matters. On first load, the iframe does not appear, it only appears when one of the links containing the [target="pdfViewer"] atribute is clicked.>
+		<center><iframe id="pdfViewer" name="pdfViewer" width="70%" height="70%" hidden></iframe></center>
+	</body>
+
+
+
+<!Javascript starts here. DO NOT TOUCH. There is no need to change anything in here, you WILL break something if you dont know Javascript already, stick to the HTML area>
+
+<!If you truly need to tocuh things here or need to understand how they work, basically the Javascript makes the animation in the background in the "Animated Background" section, anjd in the "PDF Viewer" section it makes the pdfViewer capable of being hidden and reapppearing when the link is clicked.>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const numLines = 120;
-  const animatedBackground = document.querySelector('.animated-background');
 
-  for (let i = 0; i < numLines; i++) {
-    const line = document.createElement('div');
-    line.classList.add('line');
-    line.style.left = `${Math.random() * 100}%`;
-    line.style.top = `${Math.random() * 100}%`;
-    animatedBackground.appendChild(line);
-  }
+    /* =========================
+       ANIMATED BACKGROUND
+       ========================= */
 
-  const iframe = document.querySelector('iframe[name="contentFrame"]');
-  const textElement = document.getElementById('displayText');
-  textElement.style.display = 'none';
-  iframe.style.display = 'none';
+    const numLines = 120;
+    const animatedBackground = document.querySelector('.animated-background');
 
-  let openSubmenu = null;
+    for (let i = 0; i < numLines; i++) {
+        const line = document.createElement('div');
 
-  function checkViewport() {
-    if (window.innerWidth <= 768) {
-      iframe.style.display = 'none';
+        line.classList.add('line');
+        line.style.left = `${Math.random() * 100}%`;
+        line.style.top = `${Math.random() * 100}%`;
+
+        animatedBackground.appendChild(line);
     }
-  }
 
-  checkViewport();
-  window.addEventListener('resize', checkViewport);
 
-  function showContent(category) {
-    document.querySelectorAll('.submenu').forEach(submenu => {
-      submenu.style.display = 'none';
-      submenu.classList.remove('active');
+    /* =========================
+       PDF VIEWER
+       ========================= */
+
+    const pdfViewer = document.getElementById('pdfViewer');
+
+    document.querySelectorAll('a[target="pdfViewer"]').forEach(link => {
+        link.addEventListener('click', () => {
+            pdfViewer.hidden = false;
+        });
     });
 
-    const targetSubmenu = document.getElementById(category);
-    targetSubmenu.style.display = 'block';
-    targetSubmenu.classList.add('active');
-    openSubmenu = targetSubmenu;
-
-    targetSubmenu.querySelectorAll('a[target="contentFrame"]').forEach((link, index) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-
-        const href = link.getAttribute('href'); // FIXED VARIABLE
-
-        let textToShow;
-
-        if (href.includes('vonkelprop2024kwartaal1.pdf')) {
-          textToShow = 'Vrugtefees, ATKV Jeugtak, Valentynsdag, ...';
-        } else if (href.includes('vonkelprop2024kwartaal2.pdf')) {
-          textToShow = 'Hokkie, Landloop, Netbal, ...';
-        } else if (href.includes('vonkelprop2024kwartaal3.pdf')) {
-          textToShow = 'Fast 5 Netbal, 7s Rugby, Atletiek, ...';
-        } else if (href.includes('vonkelprop2025kwartaal1.pdf')) {
-          textToShow = 'Nuwelingskonsert, Vrugtefees, ...';
-        } else if (href.includes('vonkelprop2025kwartaal2.pdf')) {
-          textToShow = 'Hokkie, Rugby, Netbal, ...';
-        } else if (href.includes('Term12026.pdf')) {
-          textToShow = 'Interne Redenaars, EG Jansen Redenaars, Rugby Night series, Netball Night series, Cricket, First Hockey team, Interhouse, Athletics, Spirit week, Fruit festival, Nuwelingkonsert, New Staff, Blood Donation, ATKV Jeugtak, RCL Management, PI-Day, Extramural Karate, MR and MISS Kuswag';
-        } else if ( href.includes('Term32026.pdf')
-) {
-  textToShow = 'Not out yet. Wait for indicated term.';
-        }
-
-        displayText(textToShow, index, href);
-
-        iframe.style.display = 'block';
-        iframe.src = href;
-      });
-    });
-  }
-
-  function displayText(text, index, pdfLink) {
-    textElement.innerHTML = `<ul style="margin: 0 auto; display: table;">${text.split(', ').map(item => `<li>${item}</li>`).join('')}</ul>`;
-    textElement.style.display = 'block';
-    textElement.style.paddingBottom = '60px';
-
-    const toggleMenuButton = document.createElement('button');
-    toggleMenuButton.id = `toggleMenu${index + 1}`;
-    toggleMenuButton.textContent = 'Click for PDF';
-    toggleMenuButton.classList.add('toggle-menu-button');
-    textElement.appendChild(toggleMenuButton);
-
-    toggleMenuButton.addEventListener('click', () => {
-      window.open(pdfLink, '_blank');
-    });
-  }
-
-  document.addEventListener('click', event => {
-    if (openSubmenu && !openSubmenu.contains(event.target) && !event.target.closest('.menu > ul > li > a')) {
-      openSubmenu.style.display = 'none';
-      openSubmenu = null;
-      textElement.style.display = 'none';
-      iframe.style.display = 'none';
-      iframe.src = '';
-    }
-  });
-
-  document.querySelectorAll('a[href="#"]').forEach(link => {
-    link.addEventListener('click', event => {
-      event.preventDefault();
-      const category = link.getAttribute('onclick').match(/'([^']+)'/)[1];
-      showContent(category);
-      event.stopPropagation();
-    });
-  });
-
-  function adjustMobileSubmenuButtons() {
-    const submenuButtons = document.querySelectorAll('.submenu li');
-
-    if (window.innerWidth <= 768) {
-      submenuButtons.forEach(button => {
-        button.style.padding = '15px 25px';
-        button.style.width = '100%';
-        button.style.transform = 'translateY(-60px)';
-        button.querySelector('a').style.padding = '10px 0';
-      });
-    } else {
-      submenuButtons.forEach(button => {
-        button.style.padding = '';
-        button.style.width = '';
-        button.style.transform = '';
-        button.querySelector('a').style.padding = '';
-      });
-    }
-  }
-
-  adjustMobileSubmenuButtons();
-  window.addEventListener('resize', adjustMobileSubmenuButtons);
 });
 </script>
-	
-</body>
-
-	
 </html>
